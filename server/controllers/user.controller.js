@@ -88,12 +88,12 @@ export const loginUser = async (req, res, next) => {
     return (
       res
         .status(200)
-        // .cookie("token", token, {
-        //   maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
-        //   httpOnly: true,
-        //   sameSite: "none",
-        //   secure: true,
-        // })
+        .cookie("token", token, {
+          maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
+          httpOnly: true,
+          sameSite: "none",
+          secure: true,
+        })
         .json({
           message: `Welcome back ${user[0].fullName}`,
           user: user[0],
@@ -140,11 +140,11 @@ export const logoutUser = async (req, res, next) => {
   try {
     return res
       .status(200)
-      // .clearCookie("token", {
-      //   httpOnly: true,
-      //   sameSite: "none",
-      //   secure: true,
-      // })
+      .clearCookie("token", {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      })
       .json({
         message: "Logged out successfully",
         success: true,
