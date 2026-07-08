@@ -8,10 +8,8 @@ An inventory and order management system for warehouses, built as a 4th semester
 </p>
 
 ## Demo
- 
-<!-- Replace the line below with the direct video URL GitHub gives you after
-     dragging your video file into the README editor or a new Issue. -->
-Coming soon
+
+https://github.com/user-attachments/assets/137a59dc-0d6b-4fdf-8e82-29a5518ce31b
 
 ## Overview
 
