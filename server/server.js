@@ -32,6 +32,9 @@ app.use(
     ],
   }),
 );
+app.options("/*", (_, res) => {
+  res.sendStatus(200);
+});
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
