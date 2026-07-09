@@ -9,8 +9,8 @@ An inventory and order management system for warehouses, built as a 4th semester
 
 ## Demo
 
-https://github.com/user-attachments/assets/137a59dc-0d6b-4fdf-8e82-29a5518ce31b
-
+[https://github.com/user-attachments/assets/137a59dc-0d6b-4fdf-8e82-29a5518ce31b
+](https://github.com/user-attachments/assets/cec89a4f-d4a5-4dd9-b520-805b7dcb9965)
 ## Overview
 
 CEMS supports three distinct roles, each with its own portal:
