@@ -4,6 +4,7 @@ import { loginUserThunk } from "../../../store/user/user.thunk";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { LogIn, Mail, Lock } from "lucide-react";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -37,37 +38,36 @@ export default function LoginForm() {
   };
 
   return (
-    <>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            alt="Your Company"
-            src="/CEMS_Logo.png"
-            className="mx-auto h-50 w-auto"
-          />
-          <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Sign in to your account
-          </h2>
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        {/* Logo/Header */}
+        <div className="mb-8 text-left">
+          <div className="flex justify-start items-center px-7">
+            <img
+              className="h-13 w-auto object-contain mb-4"
+              src="/CEMS_Logo_1.png"
+              alt="Company Logo"
+            />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 px-8">Welcome Back</h1>
+          <p className="text-gray-500 px-8">Sign in to your account to continue</p>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* Email */}
+        {/* Login Card */}
+        <div className="bg-white border border-gray-200 shadow-sm p-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            {/* Email Field */}
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm/6 font-medium text-gray-900"
-              >
-                Email address
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
               </label>
-              <div className="mt-2">
+              <div className="relative">
+                <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
                 <input
                   id="email"
                   type="email"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 
-                             text-base text-gray-900 outline-1 -outline-offset-1 
-                             outline-gray-300 placeholder:text-gray-400 
-                             focus:outline-2 focus:-outline-offset-2 focus:outline-green-600"
+                  placeholder="you@example.com"
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent bg-gray-50 transition-all duration-200"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -76,75 +76,59 @@ export default function LoginForm() {
                     },
                   })}
                 />
-                {errors.email && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.email.message}
-                  </p>
-                )}
               </div>
+              {errors.email && (
+                <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>
+              )}
             </div>
 
-            {/* Password */}
+            {/* Password Field */}
             <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-green-600 hover:text-green-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
+
+              <div className="relative">
+                <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
                 <input
                   id="password"
                   type="password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 
-                             text-base text-gray-900 outline-1 -outline-offset-1 
-                             outline-gray-300 placeholder:text-gray-400 
-                             focus:outline-2 focus:-outline-offset-2 focus:outline-green-600"
+                  placeholder="••••••••"
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent bg-gray-50 transition-all duration-200"
                   {...register("password", {
                     required: "Password is required",
                     minLength: { value: 6, message: "Minimum 6 characters" },
                   })}
                 />
-                {errors.password && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.password.message}
-                  </p>
-                )}
               </div>
+              {errors.password && (
+                <p className="text-red-600 text-sm mt-1">{errors.password.message}</p>
+              )}
             </div>
 
             {/* Submit Button */}
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex w-full justify-center rounded-md bg-green-600 
-                           px-3 py-1.5 text-sm/6 font-semibold text-white 
-                           shadow-xs hover:bg-green-500 
-                           disabled:opacity-50 disabled:cursor-not-allowed
-                           focus-visible:outline-2 focus-visible:outline-offset-2 
-                           focus-visible:outline-green-600"
-              >
-                {loading ? "Signing in..." : "Sign in"}
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {loading ? (
+                <>
+                  <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Signing in...
+                </>
+              ) : (
+                <>
+                  <LogIn className="h-5 w-5" />
+                  Sign in
+                </>
+              )}
+            </button>
           </form>
+        </div>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Welcome back!
-          </p>
+        {/* Footer */}
+        <div className="mt-6 text-center text-sm text-gray-600">
+          Welcome back!
         </div>
       </div>
-    </>
+    </div>
   );
 }

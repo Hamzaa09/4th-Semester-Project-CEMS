@@ -31,8 +31,8 @@ app.use("/orders", orderRouter);
 
 app.use(errorMiddleware);
 
-// app.listen(port, () => {
-//     console.log(`listening on http://localhost:${port}`);
-// });
+app.listen(port, () => {
+    console.log(`listening on http://localhost:${port}`);
+});
 
-export default app;
+// export default app;
